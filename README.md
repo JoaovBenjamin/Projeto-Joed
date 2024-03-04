@@ -32,6 +32,7 @@ API Rest do projeto Joed - Gestor de Lojas
 - [Atualizar  Usuario](#atualizar-usuario)
 - [Listar Estoque](#listar-estoque)
 - [Lançar Estoque](#lancar-estoque)
+- [Atualizar Estoque](#atualizar-estoque)
 - [Deletar Estoque](#deletar-estoque)
 - [Detalhar Estoque](#detalhar-estoque)
 
@@ -550,17 +551,17 @@ Lança a quantidade de um produto
 
 ---
 
-### Deletar Estoque
+### Atualizar Estoque
 
-`DELETE` /produto/estoque/`{id}`
+`PUT` /produto/estoque/`{id}`
 
-Apaga o estoque do produto com o `id` informado no parametro do path
+Atualiza o estoque do produto com o `id` informado no parametro do path
 
 ### Corpo de Requisição
 
 |campo|tipo|obrigatório|descrição|
 |-----|----|:-----------:|---------|
-|Quantidade|int|✅|A quantidade do produto em estoque,  que será apagada do estoque atual. 
+|Quantidade|int|✅|A quantidade do produto em estoque,  que será atualizado do estoque atual. 
 
 ```js
     {
@@ -584,6 +585,22 @@ Apaga o estoque do produto com o `id` informado no parametro do path
 |204| Estoque apago com sucesso
 |401| Não autorizado. Realize a autenticação em /login
 |400| Validação falhou. Verifique os dados enviados da requisição
+|404| O produto não foi encontrada, Verifique o `id` informado	
+---
+
+### Deletar Estoque
+
+`DELETE` /produto/estoque/`{id}`
+
+Apaga o estoque do produto com o `id` informado no parametro do path
+
+
+### Códigos de Resposta
+
+| Código | descrição |
+|--------|-----------|
+|204| Estoque apago com sucesso
+|401| Não autorizado. Realize a autenticação em /login
 |404| O produto não foi encontrada, Verifique o `id` informado	
 ---
 
