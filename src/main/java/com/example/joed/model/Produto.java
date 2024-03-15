@@ -1,13 +1,19 @@
 package com.example.joed.model;
 
-import java.util.Random;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Data;
 
-public record Produto(Long id, String nome, String icone,Categoria categoria, String descricao) {
-    public Produto(Long id, String nome, String icone, Categoria categoria, String descricao){
-        this.id = Math.abs(new Random().nextLong());
-        this.nome = nome;
-        this.icone = icone;
-        this.categoria = categoria;
-        this.descricao = descricao;
-    }
+@Entity
+@Data
+public class Produto {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String nome;
+    private String icone;
+    private String descricao;
+    private Categoria categoria;
+    private Estoque estoque;
 }
