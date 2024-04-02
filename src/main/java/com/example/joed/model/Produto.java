@@ -21,8 +21,12 @@ public class Produto {
     private String icone;
     @Size(message = "{produto.size}",min = 0, max = 255)
     private String descricao;
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     @NotBlank(message = "{produto.categoria.notblank}")
     private Categoria categoria;
+    @ManyToOne
+    @JoinColumn(name = "estoque_id")
     @NotBlank(message = "{produto.estoque.notblank}")
     private Estoque estoque;
 }
