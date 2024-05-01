@@ -38,7 +38,7 @@ public class ProdutoController {
     @GetMapping("page")
     public Page<Produto> index(
         @RequestParam(required = false) String produto,
-        @PageableDefault(size = 5, sort = "data", direction = Direction.DESC) Pageable pageable
+        @PageableDefault(size = 3, sort = "data", direction = Direction.DESC) Pageable pageable
     ){
 
         if (produto !=null){
@@ -48,7 +48,7 @@ public class ProdutoController {
         return repository.findAll(pageable);
     }
     
-    @GetMapping
+    @GetMapping()
     public List<Produto> getProduto(){
         return repository.findAll();
     }

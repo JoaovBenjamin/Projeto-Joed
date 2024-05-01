@@ -1,4 +1,5 @@
 package com.example.joed.config;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,19 +31,39 @@ public class DatabaseSeeder implements CommandLineRunner {
     public void run(String... args) throws Exception {
         categoriaRepository.saveAll(
             List.of(
-                Categoria.builder().id(1L).nome("Cama").icone("bed").build(),
-                Categoria.builder().id(2L).nome("Banheiro").icone("shower").build(),
-                Categoria.builder().id(3L).nome("Cozinha").icone("cutlery").build()
+                Categoria.builder().id(1L).nome("Cama, Mesa e Banho").icone("bed.png").build(),
+                Categoria.builder().id(2L).nome("Banheiro").icone("shower.png").build(),
+                Categoria.builder().id(3L).nome("Cozinha").icone("cutlery.png").build()
             )
         );
 
+      
+        estoqueRepository.saveAll(
+            List.of(
+                Estoque.builder()
+                                .id(1L)
+                                .quantidade(new BigDecimal(18))
+                                .build(),
+                Estoque.builder()
+                                .id(2L)
+                                .quantidade(new BigDecimal(50))
+                                .build(),
+                Estoque.builder()
+                                .id(3L)
+                                .quantidade(new BigDecimal(100))
+                                .build()
+                                
+                                
+                )
+        );  
+        
         produtoRepository.saveAll(
             List.of(
                 Produto.builder()
                                 .id(1L)
                                 .nome("Fronha")
                                 .descricao("Fronha para travesseiro")
-                                .icone("fronha")
+                                .icone("fronha.png")
                                 .categoria(categoriaRepository.findById(1L).get())
                                 .estoque(estoqueRepository.findById(1L).get())
                                 .build(),
@@ -51,7 +72,7 @@ public class DatabaseSeeder implements CommandLineRunner {
                                 .id(2L)
                                 .nome("Chuveiro")
                                 .descricao("Chuveiro Lorrenzeti")
-                                .icone("shower")
+                                .icone("shower.png")
                                 .categoria(categoriaRepository.findById(2L).get())
                                 .estoque(estoqueRepository.findById(2L).get())
                                 .build(),
@@ -60,33 +81,13 @@ public class DatabaseSeeder implements CommandLineRunner {
                                 .id(3L)
                                 .nome("Kit Talher")
                                 .descricao("Kit de garfo, colher e faca")
-                                .icone("cutlery")
+                                .icone("cutlery.png")
                                 .categoria(categoriaRepository.findById(3L).get())
                                 .estoque(estoqueRepository.findById(3L).get())
                                 .build()
-            )
-        );
-        estoqueRepository.saveAll(
-            List.of(
-                Estoque.builder()
-                                .id(1L)
-                                .produto(produtoRepository.findById(1L).get())
-                                .quantidade(150)
-                                .build(),
-                Estoque.builder()
-                                .id(1L)
-                                .produto(produtoRepository.findById(2L).get())
-                                .quantidade(50)
-                                .build(),
-                Estoque.builder()
-                                .id(1L)
-                                .produto(produtoRepository.findById(3L).get())
-                                .quantidade(23)
-                                .build()
-                                
-                                
-                )
-        );   
-    }
+            
+        )
+    );
+ } 
     
 }

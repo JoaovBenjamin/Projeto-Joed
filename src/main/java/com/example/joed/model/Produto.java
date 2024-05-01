@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -31,10 +32,10 @@ public class Produto {
     private String descricao;
     @ManyToOne
     @JoinColumn(name = "categoria_id")
-    @NotBlank(message = "{produto.categoria.notblank}")
+    @NotNull(message = "{produto.categoria.notblank}")
     private Categoria categoria;
     @ManyToOne
     @JoinColumn(name = "estoque_id")
-    @NotBlank(message = "{produto.estoque.notblank}")
+    @NotNull(message = "{produto.estoque.notblank}")
     private Estoque estoque;
 }
