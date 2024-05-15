@@ -40,7 +40,7 @@ public class CategoriaController {
 @GetMapping("page")
     public Page<Categoria> index(
         @RequestParam(required = false) String categoria,
-        @PageableDefault(size = 5, sort = "data", direction = Direction.DESC) Pageable pageable
+        @PageableDefault(size = 5, direction = Direction.DESC) Pageable pageable
     ){
 
         if (categoria !=null){
